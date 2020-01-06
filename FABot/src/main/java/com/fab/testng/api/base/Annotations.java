@@ -16,8 +16,9 @@ public class Annotations extends SeleniumBase {
 	@DataProvider(name = "fetchData")
 	public Object[][] fetchData() throws IOException {
 		return DataLibrary.readExcelData(excelFileName);
-	}	
-  
+	}
+	
+
   @BeforeMethod
   public void beforeMethod() {
 	startApp("chrome", "https://connect.maveric-systems.com/index.php/site/login");

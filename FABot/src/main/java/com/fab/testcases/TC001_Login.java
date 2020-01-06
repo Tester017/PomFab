@@ -16,14 +16,16 @@ public class TC001_Login extends Annotations{
 		author = "Daniel";
 		category = "smoke";
 		excelFileName = "TC001";
+		
 	} 
 
 	@Test
-	public void createLead() {
+	public void login() {
 		new ConnectLogin()
 		.enterUserName("danielf")
-		.enterPassword("Asdf@123")
+		.enterPassword("temp")
 		.clickLogin();
+
 	}
 	
 
