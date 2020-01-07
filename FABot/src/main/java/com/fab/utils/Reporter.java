@@ -54,8 +54,10 @@ public abstract class Reporter extends AbstractTestNGCucumberTests{
 			long snapNumber = 100000L;
 			snapNumber = takeSnap();
 			try {
+				//img = MediaEntityBuilder.createScreenCaptureFromPath
+						//("./../reports/report"+timeStamp+"/images/"+snapNumber+".jpg").build();
 				img = MediaEntityBuilder.createScreenCaptureFromPath
-						("./../reports/report"+timeStamp+"/images/"+snapNumber+".jpg").build();
+						("./../report"+timeStamp+"/images/"+snapNumber+".jpg").build();
 			} catch (IOException e) {
 				
 			}
