@@ -56,6 +56,7 @@ public abstract class Reporter extends AbstractTestNGCucumberTests{
 			try {
 //				img = MediaEntityBuilder.createScreenCaptureFromPath
 //						("./../reports/report"+timeStamp+"/images/"+snapNumber+".jpg").build();
+				//
 				img = MediaEntityBuilder.createScreenCaptureFromPath
 						("./../report"+timeStamp+"/images/"+snapNumber+".jpg").build();
 			} catch (IOException e) {
