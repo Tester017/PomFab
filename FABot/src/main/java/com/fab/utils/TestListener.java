@@ -70,7 +70,7 @@ public class TestListener extends Reporter implements ITestListener {
     }
 
 	@Override
-	public long takeSnap() {
+	public int takeSnap() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

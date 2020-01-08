@@ -24,13 +24,32 @@ public class TC001_Login extends Annotations{
 	} */
 
 	@Test
-	public void login() throws IOException {
+	public void connectLoginPositive() throws IOException {
 		
-		testcaseName = "TC001_Login";
-		testcaseDec = "Login and Verify";
+		testcaseId = "TC001";
+		testcaseName = "ConnectLogin";
+		testcaseDec = "Valid User name and Valid password";
 		author = "Daniel";
 		category = "smoke";
 		report();
+		
+		new ConnectLogin()
+		.enterUserName("danielf")
+		.enterPassword("temp")
+		.clickLogin();
+
+	}
+	
+	@Test
+	public void connectLoginNegative() throws IOException {
+		
+		testcaseId = "TC002";
+		testcaseName = "ConnectLogin";
+		testcaseDec = "Valid User Name and Invalid Password";
+		author = "Daniel";
+		category = "SIT";
+		report();
+		
 		new ConnectLogin()
 		.enterUserName("danielf")
 		.enterPassword("temp")

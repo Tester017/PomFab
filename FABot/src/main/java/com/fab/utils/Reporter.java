@@ -17,7 +17,7 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 
-public abstract class Reporter extends AbstractTestNGCucumberTests{
+public abstract class Reporter {
 	
 	public static ExtentHtmlReporter reporter;
 	public static ExtentReports extent;
@@ -25,12 +25,14 @@ public abstract class Reporter extends AbstractTestNGCucumberTests{
 	
 	public String testcaseName, testcaseDec, author, category;
 	public static  String excelFileName;
-	public static String timeStamp;
+	public static String timeStamp,reportPath,testcaseId;
+	public static int imageCount=0;
+	
 	@BeforeSuite
 	public void startReport() {
 		timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 		System.out.println(timeStamp);
-		String reportPath="./reports/report"+timeStamp;
+		reportPath="./reports/report"+timeStamp;
 		new File(reportPath+"/images").mkdirs();
 		reporter = new ExtentHtmlReporter(reportPath+"/result.html");
 		reporter.setAppendExisting(true); 
@@ -42,16 +44,19 @@ public abstract class Reporter extends AbstractTestNGCucumberTests{
 	public void report() throws IOException {
 		test = extent.createTest(testcaseName, testcaseDec);
 	    test.assignAuthor(author);
-	    test.assignCategory(category);  
+	    test.assignCategory(category);
+		new File(reportPath+"/imagesTClevel/"+testcaseId+"/Pass").mkdirs();
+
 	}
     
-    public abstract long takeSnap();
+    public abstract int takeSnap();
     
     public void reportStep(String desc, String status,boolean bSnap ) {
     	MediaEntityModelProvider img = null;
 		if(bSnap && !status.equalsIgnoreCase("INFO")){
 
-			long snapNumber = 100000L;
+			//long snapNumber = 100000L;
+			int snapNumber;
 			snapNumber = takeSnap();
 			try {
 				//img = MediaEntityBuilder.createScreenCaptureFromPath

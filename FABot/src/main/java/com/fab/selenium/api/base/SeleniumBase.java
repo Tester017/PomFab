@@ -479,16 +479,20 @@ public class SeleniumBase extends Reporter implements Browser, Elements{
 	}
 
 
-	public long takeSnap(){
-		long number = (long) Math.floor(Math.random() * 900000000L) + 10000000L; 
+	public int takeSnap(){
+		//long number = (long) Math.floor(Math.random() * 900000000L) + 10000000L; 
+		imageCount++;
 		try {
-			FileUtils.copyFile(driver.getScreenshotAs(OutputType.FILE) , new File("./reports/report"+timeStamp+"/images/"+number+".jpg"));
+			File img = driver.getScreenshotAs(OutputType.FILE);
+			FileUtils.copyFile(img, new File("./reports/report"+timeStamp+"/images/"+imageCount+".jpg"));
+			FileUtils.copyFile(img, new File("./reports/report"+timeStamp+"/imagesTClevel/"+testcaseId+"/Pass/"+imageCount+".jpg"));
+
 		} catch (WebDriverException e) {
 			System.out.println("The browser has been closed.");
 		} catch (IOException e) {
 			System.out.println("The snapshot could not be taken");
 		}
-		return number;
+		return imageCount;
 	}
 	@Override
 	public void close() {
