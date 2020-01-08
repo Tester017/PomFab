@@ -218,9 +218,11 @@ public class SeleniumBase extends Reporter implements Browser, Elements{
 		try {
 			if(ele.isDisplayed()) {
 				System.out.println("The element "+ele+" is visible");
+				reportStep("The expected "+ele.getText()+" is visible", "pass");
 				return true;
 			} else {
 				System.out.println("The element "+ele+" is not visible");
+				reportStep("The expected "+ele.getText()+" is not visible", "fail");
 			}
 		} catch (WebDriverException e) {
 			System.out.println("WebDriverException : "+e.getMessage());
@@ -294,6 +296,7 @@ public class SeleniumBase extends Reporter implements Browser, Elements{
 			System.err.println("The Browser Could not be Launched. Hence Failed");
 			throw new RuntimeException();
 		} finally {
+			browserImage=imageCount;
 			takeSnap();
 		}
 
@@ -485,7 +488,7 @@ public class SeleniumBase extends Reporter implements Browser, Elements{
 		try {
 			File img = driver.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(img, new File("./reports/report"+timeStamp+"/images/"+imageCount+".jpg"));
-			FileUtils.copyFile(img, new File("./reports/report"+timeStamp+"/imagesTClevel/"+testcaseId+"/Pass/"+imageCount+".jpg"));
+			if(imageCount!=browserImage+1) FileUtils.copyFile(img, new File("./reports/report"+timeStamp+"/imagesTClevel/"+testcaseId+"/Pass/"+imageCount+".jpg"));
 
 		} catch (WebDriverException e) {
 			System.out.println("The browser has been closed.");

@@ -23,7 +23,7 @@ public class TC001_Login extends Annotations{
 		
 	} */
 
-	@Test
+	@Test(priority=0)
 	public void connectLoginPositive() throws IOException {
 		
 		testcaseId = "TC001";
@@ -35,12 +35,13 @@ public class TC001_Login extends Annotations{
 		
 		new ConnectLogin()
 		.enterUserName("danielf")
-		.enterPassword("temp")
-		.clickLogin();
+		.enterPassword("Zxcv@123")
+		.clickLogin()
+		.verifyWelcomePresent();
 
 	}
 	
-	@Test
+	//@Test(priority=1)
 	public void connectLoginNegative() throws IOException {
 		
 		testcaseId = "TC002";
@@ -54,6 +55,7 @@ public class TC001_Login extends Annotations{
 		.enterUserName("danielf")
 		.enterPassword("temp")
 		.clickLogin();
+		new ConnectLogin().verifyInvalidPasswordError();
 
 	}
 	

@@ -26,7 +26,7 @@ public abstract class Reporter {
 	public String testcaseName, testcaseDec, author, category;
 	public static  String excelFileName;
 	public static String timeStamp,reportPath,testcaseId;
-	public static int imageCount=0;
+	public static int imageCount=0,browserImage=0;
 	
 	@BeforeSuite
 	public void startReport() {
