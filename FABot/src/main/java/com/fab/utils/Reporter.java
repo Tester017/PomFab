@@ -38,7 +38,7 @@ public abstract class Reporter extends AbstractTestNGCucumberTests{
 		extent.attachReporter(reporter);
 	}
 	
-    @BeforeClass
+    //@BeforeClass
 	public void report() throws IOException {
 		test = extent.createTest(testcaseName, testcaseDec);
 	    test.assignAuthor(author);
