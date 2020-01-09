@@ -6,7 +6,7 @@ public class ConnectHome extends Annotations{
 
 	public ConnectHome verifyWelcomePresent() 
 	{
-		verifyDisplayed(locateElement("xpath", "//a[contains(text(),'Welcomee')]"));
+		verifyDisplayed(locateElement("xpath", "//a[contains(text(),'Welcome')]"));
 		return this;
 	}
 
