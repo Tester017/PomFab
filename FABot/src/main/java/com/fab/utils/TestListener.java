@@ -1,5 +1,9 @@
 package com.fab.utils;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -7,8 +11,10 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import com.fab.selenium.api.base.SeleniumBase;
 
-public class TestListener extends Reporter implements ITestListener {
+
+public class TestListener extends SeleniumBase implements ITestListener {
 
     private static String getTestMethodName(ITestResult iTestResult) {
         return iTestResult.getMethod().getConstructorOrMethod().getName();
@@ -55,6 +61,23 @@ public class TestListener extends Reporter implements ITestListener {
         //ExtentReports log and screenshot operations for failed tests.
         ExtentTestManager.getTest().log(LogStatus.FAIL, "Test Failed",
             ExtentTestManager.getTest().addBase64ScreenShot(base64Screenshot));*/
+        
+        File srcDir = new File(reportPath+"/imagesTClevel/"+testcaseId+"/Pass");
+		new File(reportPath+"/imagesTClevel/"+testcaseId+"/Fail").mkdirs();
+	    File destDir = new File(reportPath+"/imagesTClevel/"+testcaseId+"/Fail");
+		FileUtils test = new FileUtils();
+		try {
+			test.copyDirectory(srcDir, destDir);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			delete(srcDir);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @Override
@@ -68,12 +91,6 @@ public class TestListener extends Reporter implements ITestListener {
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
         System.out.println("Test failed but it is in defined success ratio " + getTestMethodName(iTestResult));
     }
-
-	@Override
-	public int takeSnap() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }
 

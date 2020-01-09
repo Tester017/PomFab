@@ -1,7 +1,9 @@
 package com.fab.testcases;
 
+import java.io.File;
 import java.io.IOException;
 
+import org.apache.commons.io.FileUtils;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -35,13 +37,13 @@ public class TC001_Login extends Annotations{
 		
 		new ConnectLogin()
 		.enterUserName("danielf")
-		.enterPassword("Zxcv@123")
+		.enterPassword("Mavdec@123")
 		.clickLogin()
 		.verifyWelcomePresent();
 
 	}
 	
-	//@Test(priority=1)
+	@Test(priority=1)
 	public void connectLoginNegative() throws IOException {
 		
 		testcaseId = "TC002";
@@ -59,5 +61,6 @@ public class TC001_Login extends Annotations{
 
 	}
 	
+
 
 }
