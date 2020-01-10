@@ -15,15 +15,6 @@ import com.fab.utils.TestListener;
 @Listeners(TestListener.class)
 public class TC001_Login extends Annotations{
 	
-	/*@BeforeTest
-	public void setData() {
-		testcaseName = "TC001_Login";
-		testcaseDec = "Login and Verify";
-		author = "Daniel";
-		category = "smoke";
-		excelFileName = "TC001";
-		
-	} */
 
 	@Test(priority=0)
 	public void connectLoginPositive() throws IOException {
@@ -37,7 +28,7 @@ public class TC001_Login extends Annotations{
 		
 		new ConnectLogin()
 		.enterUserName("danielf")
-		.enterPassword("Mavdec@123")
+		.enterPassword("Mav")
 		.clickLogin()
 		.verifyWelcomePresent();
 
