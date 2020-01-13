@@ -16,7 +16,7 @@ public class ConnectLogin extends Annotations{
 	@FindBy(how=How.ID, using="LoginForm_username")  WebElement eleUserNameField;
 	@FindBy(how=How.ID, using="LoginForm_password")  WebElement elePasswordField;
 	@FindBy(how=How.XPATH, using="//input[@type='submit']") WebElement eleLoginButton;
-	@FindBy(how=How.XPATH, using="//div[text()='Invalid password']") WebElement eleInvalidPassword;
+	//@FindBy(how=How.XPATH, using="//div[text()='Invalid password']") WebElement eleInvalidPassword;
 
 
 	public ConnectLogin enterUserName(String dUserName) {
@@ -30,7 +30,7 @@ public class ConnectLogin extends Annotations{
 	}
 	
 	public ConnectLogin verifyInvalidPasswordError() {
-		verifyDisplayed(eleInvalidPassword);
+		verifyDisplayed(locateElement("xpath","//div[text()='Invalid password']"));
 		return this;
 	}
 	
